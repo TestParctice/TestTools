@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="/static/js/jquery-1.12.4.min.js"></script>
+    <title>常用测试数据</title>
+    <script>
+        $(function () {
+            $.get('/message/getall', function (data) {
+                res = data.allMsg
+                console.log(res)
+                $("#username").val(res[0])//用户姓名
+                $("#id_card").val(res[1])//身份证号码
+                $("#phone").val(res[2])//电话号码
+                $("#tyshzxm").val(res[3])//社会统一征信码
+                $("#zzjgdm").val(res[4])//组织机构代码
+                $("#vin").val(res[5])//车辆车架号
+                $("#zzm").val(res[6])//中征码
+                $("#gonghang").val(res[7])//工行银行卡号
+                $("#nonghang").val(res[8])//农行银行卡号
+                $("#jiaohang").val(res[9])//交行银行卡号
+                $("#zhonghang").val(res[10])//中行银行卡号
+                $("#jianshe").val(res[11])//建行银行卡号
+            });
+            $('#username_button').click(function () {
+                $.ajax({
+                    'url': "/message/getname",
+                    'dataType': 'json',
+                    "type": "get",
+                }).success(function (data) {
+                    res = data.name
+                    $("#username").empty().val(res)//用户姓名
+                })
+            });
+            $('#id_card_button').click(function () {
+                $.ajax({
+                    'url': "/message/getidCard",
+                    'dataType': 'json',
+                    "type": "get",
+                }).success(function (data) {
+                    res = data.idCard
+                    $("#id_card").empty().val(res)//用户姓名
+                })
+            });
+            $('#phone_button').click(function () {
+                $.ajax({
+                    'url': "/message/getphone",
+                    'dataType': 'json',
+                    "type": "get",
+                }).success(function (data) {
+                    res = data.phone
+                    $("#phone").empty().val(res)//用户姓名
+                })
+            });
+            $('#tyshzxm_button').click(function () {
+                $.ajax({
+                    'url': "/message/getsocial_credit",
+                    'dataType': 'json',
+                    "type": "get",
+                }).success(function (data) {
+                    res = data.social_credit
+                    $("#tyshzxm").empty().val(res)//用户姓名
+                })
+            });
+            $('#zzjgdm_button').click(function () {
+                $.ajax({
+                    'url': "/message/getorganization",
+                    'dataType': 'json',
+                    "type": "get",
+                }).success(function (data) {
+                    res = data.organization
+                    $("#zzjgdm").empty().val(res)//用户姓名
+                })
+            });
+            $('#vin_button').click(function () {
+                $.ajax({
+                    'url': "/message/getvin",
+                    'dataType': 'json',
+                    "type": "get",
+                }).success(function (data) {
+                    res = data.vin
+                    $("#vin").empty().val(res)//用户姓名
+                })
+            });
+            $('#zzm_button').click(function () {
+                $.ajax({
+                    'url': "/message/getzzm",
+                    'dataType': 'json',
+                    "type": "get",
+                }).success(function (data) {
+                    res = data.zzm
+                    $("#zzm").empty().val(res)//用户姓名
+                })
+            });
+            $('#gonghang_button').click(function () {
+                $.ajax({
+                    'url': "/message/getgonghang",
+                    'dataType': 'json',
+                    "type": "get",
+                }).success(function (data) {
+                    res = data.gonghang
+                    $("#gonghang").empty().val(res)//用户姓名
+                })
+            });
+            $('#nonghang_button').click(function () {
+                $.ajax({
+                    'url': "/message/getnonghang",
+                    'dataType': 'json',
+                    "type": "get",
+                }).success(function (data) {
+                    res = data.nonghang
+                    $("#nonghang").empty().val(res)//用户姓名
+                })
+            });
+            $('#jiaohang_button').click(function () {
+                $.ajax({
+                    'url': "/message/getjiaotong",
+                    'dataType': 'json',
+                    "type": "get",
+                }).success(function (data) {
+                    res = data.jiaotong
+                    $("#jiaohang").empty().val(res)//用户姓名
+                })
+            });
+            $('#zhonghang_button').click(function () {
+                $.ajax({
+                    'url': "/message/getzhongguo",
+                    'dataType': 'json',
+                    "type": "get",
+                }).success(function (data) {
+                    res = data.zhongguo
+                    $("#zhonghang").empty().val(res)//用户姓名
+                })
+            });
+            $('#jianshe_button').click(function () {
+                $.ajax({
+                    'url': "/message/getjianshe",
+                    'dataType': 'json',
+                    "type": "get",
+                }).success(function (data) {
+                    res = data.jianshe
+                    $("#jianshe").empty().val(res)//用户姓名
+                })
+            });
+            $('#all_button').click(function () {
+                $.ajax({
+                    'url': "/message/getall",
+                    'dataType': 'json',
+                    "type": "get",
+                }).success(function (data) {
+                    res = data.allMsg
+                    $("#username").empty().val(res[0])//用户姓名
+                    $("#id_card").empty().val(res[1])//身份证号码
+                    $("#phone").empty().val(res[2])//电话号码
+                    $("#tyshzxm").empty().val(res[3])//社会统一征信码
+                    $("#zzjgdm").empty().val(res[4])//组织机构代码
+                    $("#vin").empty().val(res[5])//车辆车架号
+                    $("#zzm").empty().val(res[6])//中征码
+                    $("#gonghang").empty().val(res[7])//工行银行卡号
+                    $("#nonghang").empty().val(res[8])//农行银行卡号
+                    $("#jiaohang").empty().val(res[9])//交行银行卡号
+                    $("#zhonghang").empty().val(res[10])//中行银行卡号
+                    $("#jianshe").empty().val(res[11])//建行银行卡号
+                })
+            });
+            $("#copy_username").click(function () {
+                var input = $('#username');
+                input.select();
+                document.execCommand("Copy");
+            })
+            $("#copy_card").click(function () {
+                var input = $('#id_card');
+                input.select();
+                document.execCommand("Copy");
+            })
+            $("#copy_phone").click(function () {
+                var input = $('#phone');
+                input.select();
+                document.execCommand("Copy");
+            })
+            $("#copy_tyshzxm").click(function () {
+                var input = $('#tyshzxm');
+                input.select();
+                document.execCommand("Copy");
+            })
+            $("#copy_zzjgdm").click(function () {
+                var input = $('#zzjgdm');
+                input.select();
+                document.execCommand("Copy");
+            })
+            $("#copy_vin").click(function () {
+                var input = $('#vin');
+                input.select();
+                document.execCommand("Copy");
+            })
+            $("#copy_zzm").click(function () {
+                var input = $('#zzm');
+                input.select();
+                document.execCommand("Copy");
+            })
+            $("#copy_gonghang").click(function () {
+                var input = $('#gonghang');
+                input.select();
+                document.execCommand("Copy");
+            })
+            $("#copy_nonghang").click(function () {
+                var input = $('#nonghang');
+                input.select();
+                document.execCommand("Copy");
+            })
+            $("#copy_jiaohang").click(function () {
+                var input = $('#jiaohang');
+                input.select();
+                document.execCommand("Copy");
+            })
+            $("#copy_zhonghang").click(function () {
+                var input = $('#zhonghang');
+                input.select();
+                document.execCommand("Copy");
+            })
+            $("#copy_jianshe").click(function () {
+                var input = $('#jianshe');
+                input.select();
+                document.execCommand("Copy");
+            })
+        })
+    </script>
+</head>
+<body>
+<h1>常用测试数据自动生成</h1>
+<div>
+    <form id="get_message_form" method="get">
+        <table>
+            <tbody>
+            <tr>
+                <td></td>
+                <td></td>
+                <td><input type="button" id="all_button" value="重新获取全部的测试数据" class="test_button"></td>
+            </tr>
+            <tr>
+                <td><p>用户姓名:</p></td>
+                <td><input id="username" name="username" class="text_input"></td>
+                <td><input type="button" id="username_button" value="重新获取数据" class="text_input"></td>
+                <td><input type="button" id="copy_username" value="复制信息" class="copy_text"></td>
+            </tr>
+            <tr>
+                <td><p>身份证号码:</p></td>
+                <td><input id="id_card" name="id_card" class="text_input" value="{{data.idCard}}"></td>
+                <td><input type="button" id="id_card_button" value="重新获取数据" class="test_button"></td>
+                <td><input type="button" id="copy_card" value="复制信息" class="copy_text"></td>
+            </tr>
+            <tr>
+                <td><p>电话号码:</p></td>
+                <td><input id="phone" name="phone" class="text_input"></td>
+                <td><input type="button" id="phone_button" value="重新获取数据" class="test_button"></td>
+                <td><input type="button" id="copy_phone" value="复制信息" class="copy_text"></td>
+            </tr>
+            <tr>
+                <td><p>社会统一征信码:</p></td>
+                <td><input id="tyshzxm" name="tyshzxm" class="text_input"></td>
+                <td><input type="button" id="tyshzxm_button" value="重新获取数据" class="test_button"></td>
+                <td><input type="button" id="copy_tyshzxm" value="复制信息" class="copy_text"></td>
+            </tr>
+            <tr>
+                <td><p>组织机构代码:</p></td>
+                <td><input id="zzjgdm" name="zzjgdm" class="text_input"></td>
+                <td><input type="button" id="zzjgdm_button" value="重新获取数据" class="test_button"></td>
+                <td><input type="button" id="copy_zzjgdm" value="复制信息" class="copy_text"></td>
+            </tr>
+            <tr>
+                <td><p>车辆车架号:</p></td>
+                <td><input id="vin" name="vin" class="text_input"></td>
+                <td><input type="button" id="vin_button" value="重新获取数据" class="test_button"></td>
+                <td><input type="button" id="copy_vin" value="复制信息" class="copy_text"></td>
+            </tr>
+            <tr>
+                <td><p>中征码:</p></td>
+                <td><input id="zzm" name="zzm" class="text_input"></td>
+                <td><input type="button" id="zzm_button" value="重新获取数据" class="test_button"></td>
+                <td><input type="button" id="copy_zzm" value="复制信息" class="copy_text"></td>
+            </tr>
+            <tr>
+                <td><p>工行银行卡号:</p></td>
+                <td><input id="gonghang" name="gonghang" class="text_input"></td>
+                <td><input type="button" id="gonghang_button" value="重新获取数据" class="test_button"></td>
+                <td><input type="button" id="copy_gonghang" value="复制信息" class="copy_text"></td>
+            </tr>
+            <tr>
+                <td><p>农行银行卡号:</p></td>
+                <td><input id="nonghang" name="nonghang" class="text_input"></td>
+                <td><input type="button" id="nonghang_button" value="重新获取数据" class="test_button"></td>
+                <td><input type="button" id="copy_nonghang" value="复制信息" class="copy_text"></td>
+            </tr>
+            <tr>
+                <td><p>交行银行卡号:</p></td>
+                <td><input id="jiaohang" name="jiaohang" class="text_input"></td>
+                <td><input type="button" id="jiaohang_button" value="重新获取数据" class="test_button"></td>
+                <td><input type="button" id="copy_jiaohang" value="复制信息" class="copy_text"></td>
+            </tr>
+            <tr>
+                <td><p>中行银行卡号:</p></td>
+                <td><input id="zhonghang" name="zhonghang" class="text_input"></td>
+                <td><input type="button" id="zhonghang_button" value="重新获取数据" class="test_button"></td>
+                <td><input type="button" id="copy_zhonghang" value="复制信息" class="copy_text"></td>
+            </tr>
+            <tr>
+                <td><p>建行银行卡号:</p></td>
+                <td><input id="jianshe" name="jianshe" class="text_input"></td>
+                <td><input type="button" id="jianshe_button" value="重新获取数据" class="test_button"></td>
+                <td><input type="button" id="copy_jianshe" value="复制信息" class="copy_text"></td>
+            </tr>
+            </tbody>
+        </table>
+    </form>
+</div>
+</body>
+</html>

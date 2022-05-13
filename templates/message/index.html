@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>首页</title>
+</head>
+<body>
+<h1>
+    欢迎{{username}}登录成功
+</h1>
+<div id="all_div">
+    <div id="ml">
+        <div id="data_div">
+            <a href="{% url 'message:getmsg' %}" id="data">
+                <h1><b>自动生成测试数据</b></h1>
+            </a>
+        </div>
+        <div id="ui_div">
+            <a href="" id="ui">
+                <h1><b>UI自动化练习</b></h1>
+            </a>
+        </div>
+        <div id="monkey_div">
+            <a href="" id="monkey">
+                <h1><b>自动生成monke命令</b></h1>
+            </a>
+        </div>
+        <div id="requests_div">
+            <a href="" id="requests">
+                <h1><b><abbr>API</abbr>测试练习</b></h1>
+            </a>
+        </div>
+    </div>
+</div>
+</body>
+</html>
