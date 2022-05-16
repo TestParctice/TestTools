@@ -5,6 +5,7 @@ from django.db import models
 
 class UserInfo(models.Model):
     username = models.CharField(max_length=200)
+    name = models.CharField(max_length=200)
     password = models.CharField(max_length=200)
     ctime = models.DateField()
     utime = models.DateField()

@@ -1,0 +1,27 @@
+#z_div {
+    text-align: center;
+}
+
+.lf {
+    display: block;
+    text-align: left;
+}
+
+.rt {
+    display: block;
+    text-align: right;
+}
+
+#id_submit,
+#copy_button_text {
+    border-radius: 30px;
+    color: #FFF;
+    background-color: #909399;
+    border-color: #909399;
+    height: 25px;
+}
+
+#a_id {
+    display: block;
+    text-align: center;
+}

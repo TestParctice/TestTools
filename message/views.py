@@ -15,14 +15,16 @@ def login(request):
         :param request:
         :return:
         """
-    # if request.session['islogin'] == True:
-    #     username = request.COOKIES['username']
-    #     return render(request, template_name='message/index.html', context={"username": username})
-    if 'username' in request.COOKIES:
-        username = request.COOKIES['username']
-    else:
-        username = ""
-    return render(request, template_name='message/login.html', context={"username": username})
+    try:
+        if request.session['islogin'] == True:
+            username = request.COOKIES['username']
+        return render(request, template_name='message/index.html', context={"username": username})
+    except:
+        if 'username' in request.COOKIES:
+            username = request.COOKIES['username']
+        else:
+            username = ""
+        return render(request, template_name='message/login.html', context={"username": username})
 
 
 def login_check(request):
@@ -51,6 +53,16 @@ def login_check(request):
 def index(request):
     username = request.session['username']
     return render(request, template_name='message/index.html', context={"username": username})
+
+
+def get_name_by_username(request):
+    try:
+        username = request.COOKIES['username']
+        user = UserInfo.objects.filter(username=username)
+        name = user[0].name
+        return JsonResponse({"name": name})
+    except:
+        return redirect(reverse("message:login"))
 
 
 def verify_code(request):
@@ -153,3 +165,59 @@ def getjiaotong(request):
     jiaotong = gen_bank_card_jiaotong()  # 交通
     list = [jiaotong]
     return JsonResponse({"jiaotong": list})
+
+
+def monkey(request):
+    return render(request, template_name="message/monkey.html")
+
+
+def get_message(request):
+    packageName = request.GET['packageName']
+    ytime = request.GET['ytime']
+    acount = request.GET['acount']
+    seed = request.GET['seed']
+    touch = request.GET['touch']
+    motion = request.GET['motion']
+    trackball = request.GET['trackball']
+    nav = request.GET['nav']
+    najornav = request.GET['najornav']
+    syskeys = request.GET['syskeys']
+    appswitch = request.GET['appswitch']
+    anyevent = request.GET['anyevent']
+    bk = request.GET['bk']
+    cs = request.GET['cs']
+    suc = request.GET['suc']
+    err = request.GET['err']
+    if packageName == "":
+        text_monkey = "包名为空,请输入包名，否则生成的monkey命令没有任何意义"
+        return JsonResponse({"text_monkey": text_monkey})
+    elif int(acount) <= 0:
+        text_monkey = "执行次数必须为正整数，请输入执行次数（正整数），否则生成的monkey命令没有任何意义"
+        return JsonResponse({"monkey": text_monkey})
+    else:
+        text_monkey = "adb shell monkey  --ignore-crashes  --ignore-timeouts " + packageName + " " + acount
+        if ytime != " ":
+            text_monkey = text_monkey + " --throttle" + ytime
+        if seed != " ":
+            text_monkey = text_monkey + " -s " + seed
+        if touch != " ":
+            text_monkey = text_monkey + " --pct-touch " + touch
+        if motion != "":
+            text_monkey = text_monkey + " --pct-motion " + motion
+        if trackball != "":
+            text_monkey = text_monkey + " --pct-trackball " + trackball
+        if nav != "":
+            text_monkey = text_monkey + " --pct-nav " + nav
+        if najornav != "":
+            text_monkey = text_monkey + " --pct-majornav " + najornav
+        if syskeys != "":
+            text_monkey = text_monkey + " --pct-syskeys " + syskeys
+        if appswitch != "":
+            text_monkey = text_monkey + " --pct-appswitch " + appswitch
+        if anyevent != "":
+            text_monkey = text_monkey + " --pct-anyevent " + anyevent
+        if suc != "":
+            text_monkey = text_monkey + " 1> " + suc
+        if err != "":
+            text_monkey = text_monkey + " 2> " + err
+    return JsonResponse({"text_monkey": text_monkey})

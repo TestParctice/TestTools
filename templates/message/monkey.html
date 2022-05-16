@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="/static/js/jquery-1.12.4.min.js"></script>
+    <link rel="stylesheet" href="../../static/css/message/monkey.css" type="text/css"/>
+    <title>生成monkey命令</title>
+    <script>
+        $(function () {
+            $('#id_submit').click(function () {
+                packageName = $('#id_package').val()
+                console.log(packageName)
+                ytime = $('#id_time').val()
+                // console.log(ytime)
+                acount = $('#id_count').val()
+                // console.log(acount)
+                seed = $('#id_seed').val()
+                // console.log(seed)
+                touch = $('#id_touch').val()
+                // console.log(touch)
+                motion = $('#id_motion').val()
+                // console.log(motion)
+                trackball = $('#id_trackball').val()
+                // console.log(trackball)
+                nav = $('#id_nav').val()
+                // console.log(nav)
+                najornav = $('#id_najornav').val()
+                console.log(najornav)
+                syskeys = $('#id_syskeys').val()
+                // console.log(syskeys)
+                appswitch = $('#id_appswitch').val()
+                console.log(appswitch)
+                anyevent = $('#id_anyevent').val()
+                // console.log(anyevent)
+                bk = $('#id_bk').val()
+                // console.log(bk)
+                cs = $('#id_cs').val()
+                // console.log(cs)
+                suc = $('#id_sucess').val()
+                // console.log(suc)
+                err = $('#id_error').val()
+                // console.log(err)
+                if (packageName == null) {
+                    alert("请输入包名，否则生成的monkey命令没有任何意义")
+                }
+                if (acount == null) {
+                    alert("请输入执行次数（正整数），否则生成的monkey命令没有任何意义")
+                } else {
+                    $.ajax({
+                        'url': "/message/get_message",
+                        'type': 'get',
+                        "asyns": false,
+                        'data': {
+                            "packageName": packageName, "ytime": ytime,
+                            "acount": acount, "seed": seed, "touch": touch,
+                            "motion": motion, "trackball": trackball, "nav": nav,
+                            "najornav": najornav, "syskeys": syskeys,
+                            "appswitch": appswitch, "anyevent": anyevent,
+                            "bk": bk, "cs": cs, "suc": suc, "err": err
+                        }
+                    }).success(function (data) {
+                        res = data.text_monkey
+                        // alert(res)
+                        $("#id_monkey_text").empty().val(res)
+                    })
+                }
+            });
+            $("#copy_button_text").click(function () {
+                var input = $('#id_monkey_text');
+                input.select();
+                document.execCommand("Copy");
+            })
+        })
+    </script>
+</head>
+<body>
+<div id="z_div">
+    <div id="msg_div">
+        <a name="lf">测试程序包名:</a> <input type="text" id="id_package" name="package"/><a name="rt"
+                                                                                       style="color: red">*请输入包名</a><br/>
+        <a name="lf">每个行为的延时(ms):</a><input type="text" id="id_time" name="name_time"/><a name="rt">正整数</a><br/>
+        <a name="lf">执行次数:</a><input type="text" id="id_count" name="name_count"/><a name="rt" style="color: red">*请输入执行次数（正整数）</a><br/>
+        <a name="lf">重现种子seed:</a><input type="text" id="id_seed" name="seed"/><a name="rt">正整数</a><br/>
+        <a name="lf">触摸事件touch:</a><input type="text" id="id_touch" name="touch"/><a name="rt">小于等于100的正整数</a><br/>
+        <a name="lf">动作事件motion:</a><input type="text" id="id_motion" name="motion"/><a name="rt">小于等于100正整数</a><br/>
+        <a name="lf">轨迹球事件trackball:</a><input type="text" id="id_trackball" name="trackball"/><a
+            name="rt">小于等于100正整数</a><br/>
+        <a name="lf">基本导航事件nav:</a><input type="text" id="id_nav" name="nav"/><a name="rt">小于等于100正整数</a><br/>
+        <a name="lf">主要导航事件najornav:</a><input type="text" id="id_najornav" name="najornav"/><a name="rt">小于等于100正整数</a><br/>
+        <a name="lf">系统关键事件syskeys:</a><input type="text" id="id_syskeys" name="syskeys"/><a
+            name="rt">小于等于100正整数</a><br/>
+        <a name="lf">运行包内activity%appswitch:</a><input type="text" id="id_appswitch" name="appswitch"/><a name="rt">小于等于100正整数</a><br/>
+        <a name="lf">其他类型事件anyevent:</a><input type="text" id="id_anyevent" name="anyevent"/><a name="rt">小于等于100正整数</a><br/>
+        <a name="lf">忽略崩溃:</a><input type="radio" value="1" checked="checked" id="id_bk" name="bk"><br/>
+        <a name="lf">忽略超时:</a><input type="radio" value="1" checked="checked" id="id_cs" name="cs"><br/>
+        <a name="lf">正确日志保存路径:</a><input type="text" id="id_sucess" name="suc" value="D:/sucess_log.txt"/><br/>
+        <a name="lf">错误日志保存路径:</a><input type="text" id="id_error" name="err" value="D:/error_log.txt"/><br/>
+        <br/>
+        <input type="submit" value="生成monkey命令" id="id_submit"/>
+    </div>
+    <br/>
+    <div id="texy_div">
+        <!--<input type="text" id="id_monkey_text" style="width: 80%;height: 20px;">-->
+        <textarea rows="6" id="id_monkey_text" cols="88"></textarea>
+    </div>
+    <br/>
+    <div id="copy_div">
+        <input type="submit" value="复制生成的monkey命令" id="copy_button_text">
+    </div>
+    <br/>
+    <div>
+        <a id="a_id">ps:触摸事件touch ,动作事件motion,轨迹球事件trackball,基本导航事件nav<br/>
+            主要导航事件najornav,系统关键事件syskeys,运行包内activity%appswitch,其他类型事件anyevent<br/>
+            每个数值都为正整数，且和小于等于100
+        </a>
+    </div>
+</div>
+</body>
+</html>

@@ -6,6 +6,7 @@ app_name = 'message'
 urlpatterns = [
     url("login$", views.login, name='login'),
     url("login_check$", views.login_check, name='login_check'),
+    url("get_name_by_username", views.get_name_by_username, name='get_name_by_username'),
     url("index$", views.index, name='index'),
     url("verify_code$", views.verify_code, name='verify_code'),
     url("getmsg$", views.getmsg, name='getmsg'),
@@ -22,4 +23,6 @@ urlpatterns = [
     url("getjianshe", views.getjianshe, name='getjianshe'),
     url("getzhongguo", views.getzhongguo, name='getzhongguo'),
     url("getjiaotong", views.getjiaotong, name='getjiaotong'),
+    url("monkey", views.monkey, name='monkey'),
+    url("get_message", views.get_message, name='get_message'),
 ]
