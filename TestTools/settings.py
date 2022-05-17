@@ -50,6 +50,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'message.middleware.MessageMiddleWare',  # 中间件
 ]
 
 ROOT_URLCONF = 'TestTools.urls'
