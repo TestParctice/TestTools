@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="../../static/css/message/index.css" type="text/css"/>
     <script>
         $(function () {
-            $.get('/message/get_name_by_username', function (data) {
+            $.get("{% url 'message:get_name_by_username' %}", function (data) {
                 $("#user_name").text(data.name)
             })
         })
